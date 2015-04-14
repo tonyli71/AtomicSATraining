@@ -78,6 +78,7 @@ virt-install --import --name atomic-ga-3 --ram 1024 --vcpus 2 --disk path=/var/l
 
 ##**Deployment Option 3: Install Atomic Hosts form ISO**
 
+建议您的机器有两个NIC，一个用于Docker，一个用于连接Internet
 插入光盘进行Atomic安装
 注意：请选择语言是英文的
 
@@ -100,6 +101,29 @@ NM_CONTROLLED=no
 NAME=enp4s0
 UUID=e40039f1-e24d-419d-99c3-dddfd0dc6ca8
 BRIDGE=docker0
+ONBOOT=yes
+```
+
+设置用于联网的界面卡
+
+cat /etc/sysconfig/network-scripts/ifcfg-enp3s0 
+
+```
+HWADDR=00:E0:B4:0F:9F:BB
+TYPE=Ethernet
+BOOTPROTO=dhcp
+DEFROUTE=yes
+PEERDNS=yes
+PEERROUTES=yes
+IPV4_FAILURE_FATAL=no
+IPV6INIT=yes
+IPV6_AUTOCONF=yes
+IPV6_DEFROUTE=yes
+IPV6_PEERDNS=yes
+IPV6_PEERROUTES=yes
+IPV6_FAILURE_FATAL=no
+NAME=enp3s0
+UUID=b55b09f3-2b63-4936-9c2f-27dcbe425609
 ONBOOT=yes
 ```
 
