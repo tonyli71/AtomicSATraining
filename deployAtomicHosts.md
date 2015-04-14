@@ -79,7 +79,9 @@ virt-install --import --name atomic-ga-3 --ram 1024 --vcpus 2 --disk path=/var/l
 ##**Deployment Option 3: Install Atomic Hosts form ISO**
 
 建议您的机器有两个NIC，一个用于Docker，一个用于连接Internet
+
 插入光盘进行Atomic安装
+
 注意：请选择语言是英文的
 
 cat /etc/sysconfig/network-scripts/ifcfg-docker0 
