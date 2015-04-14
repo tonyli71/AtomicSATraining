@@ -1,4 +1,4 @@
-# SATraining
+# Atomic SATraining
 
 ## Order that the labs should be delivered:
 
