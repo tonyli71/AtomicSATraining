@@ -75,6 +75,42 @@ virt-install --import --name atomic-ga-2 --ram 1024 --vcpus 2 --disk path=/var/l
 virt-install --import --name atomic-ga-3 --ram 1024 --vcpus 2 --disk path=/var/lib/libvirt/images/rhel-atomic-host-7-3.qcow2,format=qcow2,bus=virtio --disk path=/var/lib/libvirt/images/atomic0-cidata.iso,device=cdrom --network bridge=br0 --force
 ```
 
+
+##**Deployment Option 3: Install Atomic Hosts form ISO**
+
+插入光盘进行Atomic安装
+注意：请选择语言是英文的
+
+cat /etc/sysconfig/network-scripts/ifcfg-docker0 
+DEVICE=docker0
+TYPE=Bridge
+BOOTPROTO=none
+IPADDR=192.168.0.254
+NETMASK=255.255.255.0
+ONBOOT=yes
+
+cat /etc/sysconfig/network-scripts/ifcfg-enp4s0  
+HWADDR=00:E0:B4:0F:9F:BC
+TYPE=Ethernet
+BOOTPROTO=none
+NM_CONTROLLED=no
+NAME=enp4s0
+UUID=e40039f1-e24d-419d-99c3-dddfd0dc6ca8
+BRIDGE=docker0
+ONBOOT=yes
+
+注册到红帽订阅
+
+subscription-manager register --serverurl=subscription.rhn.redhat.com --baseurl=cdn.redhat.com  --auto-attach --force
+
+Installed Product Current Status:
+Product Name: Red Hat Enterprise Linux Server
+Status:       Subscribed
+
+Product Name: Red Hat Enterprise Linux Atomic Host
+Status:       Subscribed
+
+
 ##**Update VMs**
 
 **NOTE:** We will be working on _all three (3)_ VMs. You will probably want to have three terminal windows open.
